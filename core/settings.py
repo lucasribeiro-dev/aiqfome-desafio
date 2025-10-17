@@ -78,6 +78,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_spectacular',
     'healthcheck',
+    'clients',
 ]
 
 MIDDLEWARE = [
