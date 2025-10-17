@@ -21,11 +21,15 @@ from rest_framework.routers import DefaultRouter
 
 from clients.views import ClientViewSet
 from healthcheck.views import HealthCheckView
+from favorites.views import FavoriteViewSet
 from version.views import VersionView
 
 router = DefaultRouter()
 clients_router = DefaultRouter()
 clients_router.register(r'', ClientViewSet, basename='client')
+
+favorites_router = DefaultRouter()
+favorites_router.register(r'', FavoriteViewSet, basename='favorite')
 
 urlpatterns = [
     path("", VersionView.as_view(), name="version-view"),
@@ -34,6 +38,8 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
     path('api/clients/', include(clients_router.urls)),
+
+    path('api/favorites/', include(favorites_router.urls)),
 
     path("api/health/", HealthCheckView.as_view(), name="health-check"),
 
